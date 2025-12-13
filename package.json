@@ -4,7 +4,7 @@
   "description": "⚡ NEXT.js + Electron ⚡",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saltyshiomix/nextron.git"
+    "url": "git+https://github.com/saltyshiomix/nextron.git"
   },
   "author": {
     "name": "Shiono Yoshihide",
