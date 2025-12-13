@@ -1,7 +1,7 @@
 {
   "name": "nextron",
   "version": "9.5.0",
-  "description": "⚡ NEXT.js + Electron ⚡",
+  "description": "⚡ Next.js + Electron ⚡",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saltyshiomix/nextron.git"
