@@ -526,6 +526,7 @@ $ pnpm dlx create-nextron-app my-app --example with-tailwindcss
 $ git clone https://github.com/saltyshiomix/nextron.git
 $ cd nextron
 $ pnpm install
+$ npx lefthook install
 $ pnpm dev # default is examples/basic-lang-javascript
 ```
 
