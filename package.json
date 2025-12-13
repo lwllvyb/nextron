@@ -27,6 +27,7 @@
     "url": "https://github.com/saltyshiomix/nextron/issues",
     "email": "shiono.yoshihide@gmail.com"
   },
+  "type": "module",
   "files": [
     "bin",
     "babel.js",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "predev": "npm run build",
-    "dev": "node dev",
+    "dev": "tsx scripts/dev",
     "lint": "concurrently \"npm:lint:*\"",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
@@ -85,6 +86,7 @@
     "rimraf": "^6.1.2",
     "rollup": "^4.53.3",
     "rollup-plugin-auto-external": "^2.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.49.0"
   }
