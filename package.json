@@ -1,6 +1,6 @@
 {
   "name": "nextron",
-  "version": "9.5.0",
+  "version": "10.0.0-alpha.0",
   "description": "⚡ Next.js + Electron ⚡",
   "repository": {
     "type": "git",
