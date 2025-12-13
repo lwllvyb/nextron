@@ -31,10 +31,10 @@ type BuildCommandOptions = {
   noPack: boolean
 }
 
-export const buildCommand = new Command('dev')
+export const buildCommand = new Command('build')
 
 buildCommand
-  .description('Start nextron dev server')
+  .description('Build nextron')
   // .argument('[dir]', '公開するディレクトリ', './public')
   .option('--mac', '説明')
   .option('--linux', '説明')
