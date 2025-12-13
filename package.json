@@ -27,7 +27,6 @@
     "url": "https://github.com/saltyshiomix/nextron/issues",
     "email": "shiono.yoshihide@gmail.com"
   },
-  "type": "module",
   "files": [
     "bin",
     "babel.js",

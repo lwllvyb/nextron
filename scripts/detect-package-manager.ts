@@ -74,7 +74,6 @@ export const detectPackageManager = async ({
     hasGlobalInstallation('pnpm'),
     includeGlobalBun && hasGlobalInstallation('bun'),
   ])
-  console.log({ hasYarn, hasPnpm })
   if (hasYarn) {
     return 'yarn'
   }
