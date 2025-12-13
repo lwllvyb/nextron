@@ -1,6 +1,5 @@
 import typescript from '@typescript-eslint/eslint-plugin'
 import js from '@eslint/js'
-import nextPlugin from '@next/eslint-plugin-next'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import parserTypescript from '@typescript-eslint/parser'
