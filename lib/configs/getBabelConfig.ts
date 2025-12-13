@@ -12,5 +12,5 @@ export const getBabelConfig = (): string | undefined => {
     return path.join(cwd, 'babel.config.js')
   if (fs.existsSync(path.join(cwd, 'babel.config.ts')))
     return path.join(cwd, 'babel.config.ts')
-  return path.join(__dirname, '../babel.js')
+  return path.join(import.meta.dirname, '../babel.js')
 }
