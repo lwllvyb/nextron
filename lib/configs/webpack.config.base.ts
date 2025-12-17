@@ -8,7 +8,9 @@ import { getBabelConfig } from './getBabelConfig'
 const cwd = process.cwd()
 const isTs = fs.existsSync(path.join(cwd, 'tsconfig.json'))
 const ext = isTs ? '.ts' : '.js'
-const externals = require(path.join(cwd, 'package.json')).dependencies // eslint-disable-line @typescript-eslint/no-require-imports
+const pkg = require(path.join(cwd, 'package.json')) // eslint-disable-line @typescript-eslint/no-require-imports
+const isEsm = pkg.type === 'module'
+const externals = pkg.dependencies
 
 const getBaseConfig = async () => {
   const { mainSrcDir } = await getNextronConfig()
@@ -30,11 +32,15 @@ const getBaseConfig = async () => {
     target: 'electron-main',
     entry,
     output: {
-      filename: '[name].cjs',
+      filename: '[name].js',
       path: path.join(cwd, 'app'),
+      module: isEsm,
       library: {
-        type: 'umd',
+        type: isEsm ? 'module' : 'umd',
       },
+    },
+    experiments: {
+      outputModule: isEsm,
     },
     externals: [...Object.keys(externals || {})],
     module: {
