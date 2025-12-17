@@ -14,7 +14,7 @@ export default defineConfig([
       'webpack.config': 'lib/configs/webpack.config.production.ts',
     },
     outDir: 'bin',
-    format: ['esm'],
+    format: 'cjs',
     dts: false,
     minify: process.env.NODE_ENV === 'production',
   },
