@@ -30,7 +30,7 @@ const getBaseConfig = async () => {
     target: 'electron-main',
     entry,
     output: {
-      filename: '[name].js',
+      filename: '[name].cjs',
       path: path.join(cwd, 'app'),
       library: {
         type: 'umd',
