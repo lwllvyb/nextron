@@ -1,11 +1,13 @@
 import { Command } from 'commander'
-import { execa, Options } from 'execa'
+import { $ } from 'execa'
 import webpack from 'webpack'
+import { waitForPort } from 'get-port-please'
 import * as logger from './logger'
 import { getNextronConfig } from './configs/getNextronConfig'
 import { getConfig } from './configs/webpack.config.development'
-import { waitForPort } from 'get-port-please'
 import type { ChildProcess } from 'child_process'
+
+const $$ = $({ cwd: process.cwd(), stdio: 'inherit' })
 
 type DevCommandOptions = {
   rendererPort: number
@@ -17,7 +19,6 @@ type DevCommandOptions = {
 export const devCommand = new Command('dev')
 
 devCommand
-  .description('Start nextron dev server')
   .option('--renderer-port <number>')
   .option('--startup-delay <number>')
   .option('--electron-options <string>')
@@ -33,11 +34,6 @@ devCommand
     }
     electronOptions = electronOptions.trim()
 
-    const execaOptions: Options = {
-      cwd: process.cwd(),
-      stdio: 'inherit',
-    }
-
     const nextronConfig = await getNextronConfig()
     const startupDelay = nextronConfig.startupDelay || options.startupDelay || 0
 
@@ -50,13 +46,10 @@ devCommand
       logger.info(
         `Run main process: electron . ${rendererPort} ${electronOptions}`
       )
-      mainProcess = execa(
+      mainProcess = $$(
         'electron',
         ['.', `${rendererPort}`, ...electronOptions.split(' ')],
-        {
-          detached: true,
-          ...execaOptions,
-        }
+        { detached: true }
       )
       mainProcess.unref()
     }
@@ -67,15 +60,11 @@ devCommand
           nextronConfig.rendererSrcDir || 'renderer'
         }`
       )
-      const child = execa(
-        'next',
-        [
-          '-p',
-          rendererPort.toString(),
-          nextronConfig.rendererSrcDir || 'renderer',
-        ],
-        execaOptions
-      )
+      const child = $$('next', [
+        '-p',
+        String(rendererPort),
+        nextronConfig.rendererSrcDir || 'renderer',
+      ])
       child.on('close', () => {
         process.exit(0)
       })

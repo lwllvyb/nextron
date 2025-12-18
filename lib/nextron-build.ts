@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import { Command } from 'commander'
 import chalk from 'chalk'
-import { execa, Options } from 'execa'
+import { $ } from 'execa'
 import * as logger from './logger'
 import { getNextronConfig } from './configs/getNextronConfig'
 import { useExportCommand } from './configs/useExportCommand'
@@ -12,10 +12,7 @@ import { useExportCommand } from './configs/useExportCommand'
 const cwd = process.cwd()
 const appDir = path.join(cwd, 'app')
 const distDir = path.join(cwd, 'dist')
-const execaOptions: Options = {
-  cwd,
-  stdio: 'inherit',
-}
+const $$ = $({ cwd: process.cwd(), stdio: 'inherit' })
 
 type BuildCommandOptions = {
   mac: boolean
@@ -34,7 +31,6 @@ type BuildCommandOptions = {
 export const buildCommand = new Command('build')
 
 buildCommand
-  .description('Build nextron')
   .option('--mac')
   .option('--linux')
   .option('--win')
@@ -72,41 +68,35 @@ buildCommand
       return results
     }
 
-    const rendererSrcDir =
-      (await getNextronConfig()).rendererSrcDir || 'renderer'
     // Ignore missing dependencies
     process.env.ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES = 'true'
+
+    const rendererSrcDir =
+      (await getNextronConfig()).rendererSrcDir || 'renderer'
 
     try {
       logger.info('Clearing previous builds')
       await Promise.all([fs.remove(appDir), fs.remove(distDir)])
 
       logger.info('Building renderer process')
-      await execa(
-        'next',
-        ['build', path.join(cwd, rendererSrcDir)],
-        execaOptions
-      )
+      await $$('next', ['build', path.join(cwd, rendererSrcDir)])
       if (await useExportCommand()) {
-        await execa(
-          'next',
-          ['export', '-o', appDir, path.join(cwd, rendererSrcDir)],
-          execaOptions
-        )
+        await $$('next', [
+          'export',
+          '-o',
+          appDir,
+          path.join(cwd, rendererSrcDir),
+        ])
       }
 
       logger.info('Building main process')
-      await execa(
-        'node',
-        [path.join(import.meta.dirname, 'webpack.config.cjs')],
-        execaOptions
-      )
+      await $$('node', [path.join(import.meta.dirname, 'webpack.config.cjs')])
 
       if (options.noPack) {
         logger.info('Skip packaging...')
       } else {
         logger.info('Packaging - please wait a moment')
-        await execa('electron-builder', createBuilderArgs(), execaOptions)
+        await $$('electron-builder', createBuilderArgs())
       }
 
       logger.info('See `dist` directory')
