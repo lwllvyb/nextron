@@ -6,8 +6,8 @@ import { Command } from 'commander'
 import chalk from 'chalk'
 import { $ } from 'execa'
 import * as logger from './logger'
+import { checkNextConfig } from './configs/checkNextConfig'
 import { getNextronConfig } from './configs/getNextronConfig'
-import { useExportCommand } from './configs/useExportCommand'
 
 const cwd = process.cwd()
 const appDir = path.join(cwd, 'app')
@@ -75,19 +75,14 @@ buildCommand
       (await getNextronConfig()).rendererSrcDir || 'renderer'
 
     try {
+      logger.info('Checking next config')
+      await checkNextConfig()
+
       logger.info('Clearing previous builds')
       await Promise.all([fs.remove(appDir), fs.remove(distDir)])
 
       logger.info('Building renderer process')
       await $$('next', ['build', path.join(cwd, rendererSrcDir)])
-      if (await useExportCommand()) {
-        await $$('next', [
-          'export',
-          '-o',
-          appDir,
-          path.join(cwd, rendererSrcDir),
-        ])
-      }
 
       logger.info('Building main process')
       await $$('node', [path.join(import.meta.dirname, 'webpack.config.cjs')])
