@@ -315,21 +315,6 @@ $ yarn create nextron-app my-app --example basic-lang-javascript
 $ pnpm dlx create-nextron-app my-app --example basic-lang-javascript
 ```
 
-### [examples/basic-lang-javascript-python](./examples/basic-lang-javascript-python)
-
-<p align="center"><img src="https://i.imgur.com/RzAykrU.png"></p>
-
-```
-# with npx
-$ npx create-nextron-app my-app --example basic-lang-javascript-python
-
-# with yarn
-$ yarn create nextron-app my-app --example basic-lang-javascript-python
-
-# with pnpm
-$ pnpm dlx create-nextron-app my-app --example basic-lang-javascript-python
-```
-
 ### [examples/basic-lang-typescript](./examples/basic-lang-typescript)
 
 <p align="center"><img src="https://i.imgur.com/NZfsD1p.png"></p>
