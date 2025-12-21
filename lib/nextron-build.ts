@@ -25,7 +25,7 @@ type BuildCommandOptions = {
   universal: boolean
   config: string
   publish: string
-  noPack: boolean
+  pack: boolean // `--no-pack` option
 }
 
 export const buildCommand = new Command('build')
@@ -87,14 +87,13 @@ buildCommand
       logger.info('Building main process')
       await $$('node', [path.join(import.meta.dirname, 'webpack.config.cjs')])
 
-      if (options.noPack) {
-        logger.info('Skip packaging...')
-      } else {
+      if (options.pack) {
         logger.info('Packaging - please wait a moment')
         await $$('electron-builder', createBuilderArgs())
+        logger.info('See `dist` directory')
+      } else {
+        logger.info('Skip packaging!')
       }
-
-      logger.info('See `dist` directory')
     } catch (err) {
       console.log(`
 
