@@ -21,11 +21,11 @@
     "electron": "^39.2.7",
     "electron-builder": "^26.0.12",
     "i18next": "^23.11.5",
-    "next": "^15.4.10",
-    "next-i18next": "^15.2.0",
-    "nextron": "^9.5.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-i18next": "^14.1.2"
+    "next": "^16.2.1",
+    "next-i18next": "^16.0.0",
+    "nextron": "^9.6.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-i18next": "^16.6.2"
   }
 }

@@ -56,11 +56,12 @@ devCommand
 
     const startRendererProcess = () => {
       logger.info(
-        `Run renderer process: next -p ${rendererPort} ${
+        `Run renderer process: next dev -p ${rendererPort} ${
           nextronConfig.rendererSrcDir || 'renderer'
         }`
       )
       const child = $$('next', [
+        'dev',
         '-p',
         String(rendererPort),
         nextronConfig.rendererSrcDir || 'renderer',

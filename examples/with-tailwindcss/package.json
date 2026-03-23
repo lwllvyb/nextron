@@ -15,17 +15,17 @@
     "electron-store": "^11.0.2"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^20.11.16",
-    "@types/react": "^18.2.52",
-    "autoprefixer": "^10.4.19",
+    "@types/react": "^19.2.14",
     "electron": "^39.2.7",
     "electron-builder": "^26.0.12",
-    "next": "^15.4.10",
-    "nextron": "^9.5.0",
-    "postcss": "^8.4.38",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.9.3"
+    "next": "^16.2.1",
+    "nextron": "^9.6.0",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.7.3"
   }
 }

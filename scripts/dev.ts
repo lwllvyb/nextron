@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import { $ } from 'execa'
 import { detectPackageManager } from './detect-package-manager'
 
-await $`npm run build`
+await $({ stdio: 'inherit' })`npm run build`
 
 const cwd = process.cwd()
 
