@@ -2,7 +2,7 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig([
   {
-    entry: ['lib/nextron.ts', 'lib/nextron-dev.ts', 'lib/nextron-build.ts'],
+    entry: 'lib/nextron.ts',
     outDir: 'bin',
     format: 'cjs',
     banner: '#!/usr/bin/env node',
