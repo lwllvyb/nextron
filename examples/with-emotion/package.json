@@ -19,7 +19,7 @@
     "@emotion/styled": "^11.11.0",
     "@types/node": "^20.11.16",
     "@types/react": "^19.2.14",
-    "electron": "^39.2.7",
+    "electron": "^41.0.3",
     "electron-builder": "^26.0.12",
     "next": "^16.2.1",
     "nextron": "^9.6.0",
