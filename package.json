@@ -63,7 +63,7 @@
     "jiti": "2.6.1",
     "terser-webpack-plugin": "5.4.0",
     "tsconfig-paths-webpack-plugin": "4.2.0",
-    "webpack": "5.104.0",
+    "webpack": "5.105.4",
     "webpack-merge": "6.0.1"
   },
   "devDependencies": {
