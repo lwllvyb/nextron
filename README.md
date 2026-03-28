@@ -18,9 +18,7 @@
 1. Easy to use
 1. Be transparent and open to OSS developers
 
-## Support
-
-### Next.js vs Nextron
+## Next.js vs Nextron
 
 | next              | nextron         |
 | ----------------- | --------------- |
@@ -34,13 +32,28 @@
 | `v7.x`            | `v2.x` ~ `v3.x` |
 | `v6.x`            | `v1.x`          |
 
-### Package Manager
+## Nextron v10
 
-`npm`, `yarn` and `pnpm` are supported.
+### Migration Guide (Breaking Changes)
+
+- Upgrade `nextron` to v10
+- Rename `main/background.ts` to `main/main.ts`
+- Rename `package.json#main` field to `app/main.js`
+
+That's it!
+
+### ESM Support
+
+- `package.json`
+  - Set `package.json#type` to `module`
+- `next.config.js`
+  - Use `export default` instead of `module.exports`
+- Codebase
+  - Replace `__dirname` to `import.meta.dirname`
 
 ## Usage
 
-### Create Application with Template
+### Create Application with Templates
 
 We can use `examples/*` as a template.
 
