@@ -107,11 +107,14 @@ Run `npm run build`, and nextron outputs packaged bundles under the `dist` folde
 └── tsconfig.json
 ```
 
-## `next.config.js`
+## `next.config.ts`
 
-```js
-// `./renderer/next.config.js`
-module.exports = {
+```ts
+// `./renderer/next.config.ts`
+
+import { NextConfig } from 'next'
+
+const config: NextConfig = {
   // we need to export static files so as Electron can handle them
   output: 'export',
 
@@ -130,6 +133,8 @@ module.exports = {
     unoptimized: true,
   },
 }
+
+export default config
 ```
 
 ## `nextron` or `nextron dev` Options
@@ -255,10 +260,12 @@ publish: null # see https://www.electron.build/configuration/publish
 
 For more information, please check out [electron-builder official configuration documents](https://www.electron.build/configuration/configuration).
 
-## Custom Config: `nextron.config.js`
+## Custom Webpack Config for Main Process: `nextron.config.ts`
 
-```js
-module.exports = {
+```ts
+import { NextronConfig } from 'nextron'
+
+const config: NextronConfig = {
   // specify an alternate main src directory, defaults to 'main'
   mainSrcDir: 'main',
   // specify an alternate renderer src directory, defaults to 'renderer'
@@ -270,6 +277,8 @@ module.exports = {
     return config
   },
 }
+
+export default config
 ```
 
 ## Custom Babel Config for Main Process
