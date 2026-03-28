@@ -2,7 +2,7 @@ import path from 'path'
 import { app, ipcMain } from 'electron'
 import serve from 'electron-serve'
 import Store from 'electron-store'
-import { createWindow } from './helpers'
+import { createWindow } from './helpers/create-window'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -19,7 +19,7 @@ if (isProd) {
     width: 1000,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(import.meta.dirname, 'preload.js'),
     },
   })
 
