@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { loadScriptFile } from './typescriptLoader'
-import type { Configuration } from '../../types'
+import type { NextronConfig } from '../../types'
 
 const cwd = process.cwd()
 
@@ -12,7 +12,7 @@ const supportedConfigs = [
   'nextron.config.mjs',
 ]
 
-export const getNextronConfig = async (): Promise<Configuration> => {
+export const getNextronConfig = async (): Promise<NextronConfig> => {
   for (const config of supportedConfigs) {
     if (fs.existsSync(path.join(cwd, config))) {
       return await loadScriptFile(path.join(cwd, config))
