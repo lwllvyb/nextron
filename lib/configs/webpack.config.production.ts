@@ -19,11 +19,6 @@ import { getNextronConfig } from './getNextronConfig'
     plugins: [
       new webpack.EnvironmentPlugin({
         NODE_ENV: 'production',
-        DEBUG_PROD: false,
-        START_MINIMIZED: false,
-      }),
-      new webpack.DefinePlugin({
-        'process.type': '"browser"',
       }),
     ],
   })
